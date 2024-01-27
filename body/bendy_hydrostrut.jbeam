@@ -1,0 +1,52 @@
+{
+"Bendy_hydrostrut": {
+	"information":{
+    	"authors":"BBB",
+    	"name":"Hydro Strut",
+    	"value":250,
+    },
+    "slotType" : "Bendy_hydrostrut",
+    "flexbodies": [
+        ["mesh", "[group]:", "nonFlexMaterials"],
+        ["Bendy_hydro", ["Bendy_hydro"]],
+	],
+    "nodes": [       
+        ["id", "posX", "posY", "posZ"],
+        {"frictionCoef":0.5},
+		{"collision":true},
+		{"selfCollision":false},
+		{"nodeMaterial":"|NM_METAL"},
+		//--Bendy Bus--
+		//front
+		{"nodeWeight":10},
+		{"group":["Bendy_hydro"]},
+		["hy1r", -0.706, -0.588, 0.000],
+        ["hy1l",  0.706, -0.588, 0.000],
+    ],
+    "beams": [   
+		["id1:", "id2:"], 
+		{"deformLimitExpansion":1.2},
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+        //--Hydro Strut--
+        //strut
+        {"beamSpring":1501000,"beamDamp":5000},
+        {"beamDeform":255000,"beamStrength":260000},
+        ["hy1r", "br3r"], 
+        ["hy1l", "br3l"], 
+        //connect
+        {"beamSpring":3501000,"beamDamp":200},
+        ["hy1r", "bf3r"], 
+        ["hy1l", "bf3l"], 
+        ["hy1r", "bf2r"], 
+        ["hy1l", "bf2l"],
+        ["hy1r", "bf2l"], 
+        ["hy1l", "bf2r"],
+        {"beamPrecompression":1, "beamType":"|BOUNDED", "beamLongBound":1, "beamShortBound":1},
+        //gas stopper
+        {"beamSpring":0,"beamDamp":0},
+        {"beamLimitSpring":25001000,"beamLimitDamp":50},
+        ["hy1r", "br3r", {"longBound":0.25,"shortBound":0.25,"boundZone":0.015,"dampCutoffHz":250}], 
+        ["hy1l", "br3l", {"longBound":0.25,"shortBound":0.25,"boundZone":0.015,"dampCutoffHz":250}], 
+    ],
+}
+}

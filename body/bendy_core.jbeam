@@ -1,0 +1,12 @@
+"Camso_qlourie_astral_r_core":{
+	"information":{
+    	"authors":"Camshaft Software",
+    	"name":"Automation Exported Car",
+    	"value":1
+	},
+	"slotType" : "main",
+    "slots":[
+		["type", "default", "description"],
+		["Bendy_trim", "Bendy_trim", "Body Trim", {"coreSlot":true}],
+	],
+}
